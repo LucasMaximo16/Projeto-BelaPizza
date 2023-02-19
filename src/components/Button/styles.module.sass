@@ -1,0 +1,27 @@
+@use '../../../styles/_util' as *
+
+.button
+    max-width: 600px
+    background-color: $red-900
+    border: 0
+    padding: 0.4rem
+    color: $gray-100
+    border-radius: 0.25rem
+    transition: filter 0.2s
+
+    &:disabled
+        cursor: not-allowed
+        svg
+            animation: animate 2s infinite
+
+    &:hover
+        filter: brightness(1.05)
+
+    .buttonText
+        color: $gray-100
+
+@keyframes animate
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)
