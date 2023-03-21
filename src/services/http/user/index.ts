@@ -67,4 +67,21 @@ async function createUser({name, email, password} : types.ICreateUser) {
     )
 }
 
-export default { login, createUser }
+async function getUser(authorization: string) {
+    return api
+        .get(`/user/me`, {
+            headers: {
+                Authorization: authorization
+            }
+        })
+        .then((result) => {
+            console.log(result, 'get user');
+            return result.data;
+        })
+        .catch((error) => {
+            console.log(error);
+            return null;
+        });
+}
+
+export default { login, createUser, getUser }

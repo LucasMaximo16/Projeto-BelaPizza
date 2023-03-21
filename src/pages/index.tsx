@@ -15,6 +15,8 @@ import { toastOptions } from "../utils/toast/toastOptions";
 import { UserContext } from "../contexts/userContext/userContext";
 import  Router from "next/router";
 import { useUser } from "../hooks/useUser/useUsers";
+import { GetServerSideProps } from "next";
+import { canSSRGuest } from "../utils/SSR/canSSRGuest";
 
 export default function Home(){
 
@@ -28,8 +30,6 @@ export default function Home(){
           console.log(loginUser);
           
         if (loginUser !== null) {
-            console.log(loginUser, "to aqui");
-            console.log("batendo no push ")
             Router.push('/dashboard');
             setIsLogin(false)
         
@@ -56,16 +56,16 @@ export default function Home(){
                 <div className={styles.login}>
                     <form onSubmit={formikProps.handleSubmit}>
                         <Input 
-                            placeholder ={"email"}
-                            type={"text"}
-                            name={"email"}
+                            placeholder ="email"
+                            type="text"
+                            name="email"
                             onChange = {formikProps.handleChange}
                         />
                         
                         <Input 
                             placeholder={"password"}
-                            type={"password"}
-                            name={"password"}
+                            type="password"
+                            name="password"
                             onChange = {formikProps.handleChange}
                         />
 
@@ -84,4 +84,11 @@ export default function Home(){
         </>
     )
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+    return{
+        props: {}
+    }
+} )
+
 
