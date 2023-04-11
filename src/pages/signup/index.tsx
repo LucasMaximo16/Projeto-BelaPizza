@@ -2,7 +2,7 @@ import { Button } from "@/src/components/Button";
 import { Input } from "@/src/components/Input";
 import apiUser from "../../services/http/user/index"
 import Image from "next/image";
-import logo from "../../../public/logo.svg"
+import logo from "../../../public/Group 1.svg"
 import Head from "next/head";
 import styles from "./sytles.module.sass"
 import Link from "next/link";

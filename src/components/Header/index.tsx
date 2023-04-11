@@ -2,7 +2,7 @@ import { signOut, UserContext } from "@/src/contexts/userContext/userContext";
 import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";;
-import logo from "../../../public/logo.svg"
+import logo from "../../../public/Group 1.svg"
 import styles from "./styles.module.sass"
 
 import { FiLogOut } from 'react-icons/fi'

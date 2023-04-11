@@ -2,7 +2,7 @@ import { Input } from "@/src/components/Input";
 import Image from "next/image";
 import Head from "next/head";
 import styles from "./styles.module.sass"
-import logo from "../../public/logo.svg"
+import logo from "../../public/Group 1.svg"
 import { Button } from "../components/Button";
 import Link from "next/link";
 import { useNavigate } from 'react-router-dom';

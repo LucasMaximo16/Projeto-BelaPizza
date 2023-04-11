@@ -35,7 +35,21 @@ async function getCategory(name: types.ICreateCategory, authorization: string): 
     .catch((err) => {
         console.log(err)
         return null
-    });
-    
+    });   
 }
-export default { cadastrar, getCategory }
+
+async function deleteCategory(category_id: string, authorization: string){
+    return await api.delete("/category/" + category_id, {
+        headers:{
+            Authorization: authorization
+        }
+    })
+    .then((result) => {
+        return result.status
+    })
+    .catch((err) => {
+        console.log(err)
+        return err
+    });
+}
+export default { cadastrar, getCategory, deleteCategory }

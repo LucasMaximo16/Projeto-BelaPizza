@@ -17,6 +17,7 @@ interface ICategoryProps {
 }
 
 interface ICategory {
+    id:string,
     name:string
 }
 
@@ -42,6 +43,10 @@ export default function Category({categoryList} : ICategoryProps){
         onSubmit: (value) => handleSubmit(value),
         validationSchema: categorySchema
     })
+
+    async function deleteCategory(category_id: string, authorization: string){
+        await apiCategory.deleteCategory(category_id, authorization)
+    }
 
 
     return(
@@ -70,14 +75,13 @@ export default function Category({categoryList} : ICategoryProps){
 
                 {
                     category.map((item) => (
-                        <div className={styles.categoryContainer}>
+                        <div key={item.id} className={styles.categoryContainer}>
                             <span className={styles.categoryList}>
                                 {item.name}
-                               <div className={styles.delete}>
-                                 <BsTrash size={25}/>
-                               </div>
                             </span>
-                          
+                             <button onClick={deleteCategory(item.id, authorization)}>
+                                 <BsTrash size={25}/>
+                            </button>
                         </div>
                     ))
                 }
